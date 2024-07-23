@@ -12,7 +12,7 @@ import { myCompletions } from './autocomplete';
 
 
 export default function CodeEditor() {
-  const editor = useRef()
+  const editor = useRef<HTMLDivElement>(null);
   const [code, setCode] = useState('')
   const onUpdate = EditorView.updateListener.of((v) => {
     setCode(v.state.doc.toString())
@@ -25,14 +25,14 @@ export default function CodeEditor() {
       extensions: [
         basicSetup,
         oneDark,
-        keymap.of([defaultKeymap, indentWithTab]),
+        keymap.of([indentWithTab]),
         javascript(),
         onUpdate,
         autocompletion({override: [myCompletions]})
       ],
     })
 
-    const view = new EditorView({ state: startState, parent: editor.current })
+    const view = new EditorView({ state: startState, parent: editor.current?.parentNode as HTMLElement })
 
     return () => {
       view.destroy()
