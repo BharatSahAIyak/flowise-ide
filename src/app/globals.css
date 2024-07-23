@@ -1,0 +1,25 @@
+body {background-color: black;}
+
+.editor {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.25rem;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .cm-completionInfo-right,
+  .cm-completionInfo-left {
+    left: 0 !important;
+    top: 100% !important;
+    min-width: 250px;
+    font-size: small;
+    font-family: monospace;
+  }
+
+  .cm-tooltip.cm-tooltip-autocomplete > ul {
+    max-width: 85vw !important;
+  }
+
+}
